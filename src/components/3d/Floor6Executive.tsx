@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import * as THREE from 'three';
 import { FLOOR_PALETTES, GOLD_TRIM_MATERIAL, TEXTURES, ROUGHNESS_MAPS } from '../../utils/materials';
+import { HolographicVRPedestal } from './HolographicVRPedestal';
 
 export function Floor6Executive({ isActive = true }: { isActive?: boolean }) {
   const palette = FLOOR_PALETTES[6];
@@ -67,6 +68,9 @@ export function Floor6Executive({ isActive = true }: { isActive?: boolean }) {
           <boxGeometry args={[2.3, 0.04, 0.65]} />
         </mesh>
       </group>
+
+      {/* 6. Spatial Computing Holographic VR Headset Pedestal (Option A Hero Feature) */}
+      <HolographicVRPedestal position={[-0.8, 0.185, 0.8]} />
 
       {/* Floor Spotlight Rigs */}
       <spotLight position={[-2.5, 3.6, -1.5]} target-position={[-2.5, 0.2, -1.5]} color="#FFFBEB" intensity={2.4} angle={0.6} penumbra={0.5} castShadow={isActive} />
