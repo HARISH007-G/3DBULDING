@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import * as THREE from 'three';
 import { FLOOR_PALETTES, ALUMINUM_FIN_MATERIAL, TEXTURES, ROUGHNESS_MAPS } from '../../utils/materials';
+import { PhotoBooth } from './PhotoBooth';
 
 export function Floor5Technology({ isActive = true }: { isActive?: boolean }) {
   const palette = FLOOR_PALETTES[5];
@@ -26,13 +27,13 @@ export function Floor5Technology({ isActive = true }: { isActive?: boolean }) {
         <meshStandardMaterial map={TEXTURES.floorCarpet} roughnessMap={ROUGHNESS_MAPS.floorCarpet} roughness={0.7} metalness={0.05} />
       </mesh>
 
-      {/* 2. Server Bay Anti-Static Carbon Flooring Area */}
+      {/* 2. Photo Booth Zone Anti-Static Carbon Flooring Area */}
       <mesh position={[-5.8, 0.188, 0.5]} rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[5.0, 6.0]} />
         <meshStandardMaterial map={TEXTURES.carbonFiber} roughness={0.4} metalness={0.2} />
       </mesh>
 
-      {/* 3. Server Bay Concrete Feature Accent Wall */}
+      {/* 3. Photo Booth Concrete Feature Accent Wall */}
       <mesh position={[-7.5, 1.9, 0.5]} rotation={[0, Math.PI / 2, 0]}>
         <boxGeometry args={[6.0, 3.4, 0.15]} />
         <meshStandardMaterial map={TEXTURES.wallConcreteAccent} roughnessMap={ROUGHNESS_MAPS.wallConcreteAccent} roughness={0.8} />
@@ -52,7 +53,10 @@ export function Floor5Technology({ isActive = true }: { isActive?: boolean }) {
         <boxGeometry args={[16.0, 0.02, 0.05]} />
       </mesh>
 
-      {/* 6. Photo Booth Zone Illuminated Overhead Marquee */}
+      {/* 6. Photo Booth 3D Model Asset on Floor 5 */}
+      <PhotoBooth position={[-5.5, 0.185, 0.5]} rotation={[0, Math.PI / 6, 0]} />
+
+      {/* 7. Photo Booth Zone Illuminated Overhead Marquee */}
       <group position={[-5.5, 2.9, 0.5]}>
         <mesh material={ALUMINUM_FIN_MATERIAL}>
           <boxGeometry args={[1.6, 0.25, 0.08]} />
