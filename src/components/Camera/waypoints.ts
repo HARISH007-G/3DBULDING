@@ -92,7 +92,7 @@ export const CAMERA_WAYPOINTS: CameraWaypoint[] = [
     target: [-5.5, 21.2, 0.5],
     fov: 38,
     doorOpenProgress: 1.0,
-    description: 'Floor 5 - High-Density Server Racks'
+    description: 'Floor 5 - 3D Photo Booth & Dev Pods'
   },
   {
     progress: 0.30,

@@ -29,7 +29,8 @@ export const ASSET_MANIFEST: Record<string, AssetCategorySpec> = {
   'vr_controller': { category: 'desktop-prop', expectedHeight: [0.10, 0.25], expectedWidth: [0.08, 0.20], targetHeight: 0.18 },
   'vr_player': { category: 'electronics', expectedHeight: [1.50, 1.95], expectedWidth: [0.50, 1.00], targetHeight: 1.75 },
 
-  // Heavy Equipment
+  // Heavy Equipment & Experiential Tech
+  'photo_booth': { category: 'electronics', expectedHeight: [2.00, 2.60], expectedWidth: [1.60, 2.60], targetHeight: 2.35 },
   'server_rack': { category: 'electronics', expectedHeight: [1.80, 2.20], expectedWidth: [0.60, 1.00], targetHeight: 2.00 },
   'office_printer': { category: 'electronics', expectedHeight: [0.90, 1.30], expectedWidth: [0.60, 1.00], targetHeight: 1.10 },
   '3d_printer': { category: 'electronics', expectedHeight: [0.35, 0.60], expectedWidth: [0.40, 0.70], targetHeight: 0.45 },

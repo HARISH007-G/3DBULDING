@@ -31,15 +31,15 @@ export const FLOOR_DATA: Record<number, FloorInfo> = {
   5: {
     id: 5,
     numberStr: '05',
-    name: 'Technology & Engineering',
-    subtitle: 'AI Research & Systems Architecture',
+    name: 'Technology & Prototyping',
+    subtitle: 'AI Research & Volumetric Labs',
     tagline: 'HIGH-PERFORMANCE TECH HUB',
     accentColor: 'text-cyan-400',
     accentHex: '#00F0FF',
-    description: 'State-of-the-art engineering lab equipped with multi-monitor dev pods, glass collaboration cells, and live server array infrastructure.',
+    description: 'State-of-the-art engineering lab equipped with multi-monitor dev pods, glass collaboration cells, and volumetric 3D photo & avatar scan booth.',
     stats: [
       { label: 'Area', value: '1,500 m²' },
-      { label: 'Server Racks', value: '32 Nodes' },
+      { label: 'Photo Booth', value: '3D Scan Pod' },
       { label: 'Dev Stations', value: '80 Pods' }
     ]
   },

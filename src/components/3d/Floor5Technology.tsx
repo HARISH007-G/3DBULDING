@@ -52,8 +52,19 @@ export function Floor5Technology({ isActive = true }: { isActive?: boolean }) {
         <boxGeometry args={[16.0, 0.02, 0.05]} />
       </mesh>
 
+      {/* 6. Photo Booth Zone Illuminated Overhead Marquee */}
+      <group position={[-5.5, 2.9, 0.5]}>
+        <mesh material={ALUMINUM_FIN_MATERIAL}>
+          <boxGeometry args={[1.6, 0.25, 0.08]} />
+        </mesh>
+        <mesh position={[0, 0, 0.045]} material={cyanEmissiveMaterial}>
+          <boxGeometry args={[1.5, 0.18, 0.02]} />
+        </mesh>
+      </group>
+
       {/* Floor Spotlight Rigs */}
-      <spotLight position={[-5.5, 3.6, 0.5]} target-position={[-5.5, 0.2, 0.5]} color="#E0F2FE" intensity={2.5} angle={0.7} penumbra={0.4} castShadow={isActive} />
+      <spotLight position={[-5.5, 3.6, 0.5]} target-position={[-5.5, 0.5, 0.5]} color="#FFFBEB" intensity={2.8} angle={0.65} penumbra={0.5} castShadow={isActive} />
+      <pointLight position={[-5.5, 2.4, 0.8]} color="#00F0FF" intensity={1.4} distance={4} />
       <pointLight position={[3.5, 3.0, 0.0]} color="#BAE6FD" intensity={1.5} distance={8} />
     </group>
   );

@@ -59,23 +59,13 @@ export const ASSET_CONFIGS: GLBAssetTransform[] = [
     parentGroupId: 'ws_f5_dev'
   },
   {
-    id: 'f5_server_rack_1',
-    url: '/models/server_rack.glb',
+    id: 'f5_photo_booth',
+    url: '/models/photo_booth.glb',
     floor: 5,
-    room: 'server-bay',
-    position: [-6.5, 20.185, 0.5],
-    rotation: [0, -Math.PI / 2, 0],
-    targetHeight: 2.00,
-    anchor: 'floor'
-  },
-  {
-    id: 'f5_server_rack_2',
-    url: '/models/server_rack.glb',
-    floor: 5,
-    room: 'server-bay',
-    position: [-5.0, 20.185, 0.5],
-    rotation: [0, -Math.PI / 2, 0],
-    targetHeight: 2.00,
+    room: 'photo-booth-zone',
+    position: [-5.5, 20.185, 0.5],
+    rotation: [0, Math.PI / 6, 0],
+    targetHeight: 2.35,
     anchor: 'floor'
   },
   {
