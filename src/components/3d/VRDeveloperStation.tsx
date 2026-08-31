@@ -3,7 +3,7 @@ import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import { GOLD_TRIM_MATERIAL } from '../../utils/materials';
 
-export function VRDeveloperStation({ position = [-5.2, 0.185, 2.0] }: { position?: [number, number, number] }) {
+export function VRDeveloperStation({ position = [-5.0, 0.185, 2.0] }: { position?: [number, number, number] }) {
   const { scene: dockHeadsetScene } = useGLTF('/models/vr_headset_dock.glb');
   const { scene: controllerScene } = useGLTF('/models/vr_controller.glb');
   const { scene: gamingChairScene } = useGLTF('/models/gaming_chair.glb');
@@ -11,9 +11,9 @@ export function VRDeveloperStation({ position = [-5.2, 0.185, 2.0] }: { position
   const stationWoodMat = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color('#1A1E24'),
+        color: new THREE.Color('#141820'),
         roughness: 0.35,
-        metalness: 0.3
+        metalness: 0.4
       }),
     []
   );
@@ -28,7 +28,7 @@ export function VRDeveloperStation({ position = [-5.2, 0.185, 2.0] }: { position
     []
   );
 
-  // Normalize Dock VR Headset (target height: 0.18m)
+  // Normalize Dock VR Headset (height: 0.18m, bottom flush at Y=0)
   const normalizedDockHeadset = useMemo(() => {
     const clone = dockHeadsetScene.clone(true);
     clone.updateMatrixWorld(true);
@@ -59,7 +59,7 @@ export function VRDeveloperStation({ position = [-5.2, 0.185, 2.0] }: { position
     return wrapper;
   }, [dockHeadsetScene]);
 
-  // Normalize VR Controller for Dock
+  // Normalize VR Controller (height: 0.16m)
   const normalizedDockController = useMemo(() => {
     const clone = controllerScene.clone(true);
     clone.updateMatrixWorld(true);
@@ -90,7 +90,7 @@ export function VRDeveloperStation({ position = [-5.2, 0.185, 2.0] }: { position
     return wrapper;
   }, [controllerScene]);
 
-  // Normalize Gaming Chair (target height: 1.25m)
+  // Normalize Gaming Chair (height: 1.25m, centered and flush to floor)
   const normalizedGamingChair = useMemo(() => {
     const clone = gamingChairScene.clone(true);
     clone.updateMatrixWorld(true);
@@ -141,7 +141,7 @@ export function VRDeveloperStation({ position = [-5.2, 0.185, 2.0] }: { position
       </group>
 
       {/* 2. Magnetic VR Charging Base Stand */}
-      <group position={[-0.5, 1.0, 0]}>
+      <group position={[-0.45, 1.0, 0]}>
         <mesh position={[0, 0.02, 0]} material={stationWoodMat}>
           <boxGeometry args={[0.7, 0.04, 0.45]} />
         </mesh>
@@ -154,21 +154,21 @@ export function VRDeveloperStation({ position = [-5.2, 0.185, 2.0] }: { position
         </mesh>
 
         {/* Docked Secondary Headset */}
-        <group position={[0, 0.04, 0]} rotation={[0, 0.1, 0]}>
+        <group position={[0, 0.04, 0]} rotation={[0, 0, 0]}>
           <primitive object={normalizedDockHeadset} />
         </group>
       </group>
 
-      {/* 3. Docked Dual VR Controllers */}
-      <group position={[0.45, 1.02, -0.1]} rotation={[-0.2, 0.4, 0]}>
+      {/* 3. Docked Dual VR Controllers on Charging Mounts */}
+      <group position={[0.45, 1.02, -0.05]} rotation={[-0.3, 0.3, 0]}>
         <primitive object={normalizedDockController} />
       </group>
-      <group position={[0.75, 1.02, 0.1]} rotation={[-0.2, -0.3, 0]}>
+      <group position={[0.78, 1.02, 0.05]} rotation={[-0.3, -0.3, 0]}>
         <primitive object={normalizedDockController} />
       </group>
 
-      {/* 4. Ergonomic Gaming Chair (Situated on the other side of the room) */}
-      <group position={[10.2, 0, 0.2]} rotation={[0, -Math.PI / 4, 0]}>
+      {/* 4. Ergonomic Gaming Chair (Positioned directly in front of the desk, facing forward) */}
+      <group position={[0, 0, 0.85]} rotation={[0, 0, 0]}>
         <primitive object={normalizedGamingChair} />
       </group>
     </group>
