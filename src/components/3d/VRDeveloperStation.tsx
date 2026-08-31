@@ -3,7 +3,7 @@ import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import { GOLD_TRIM_MATERIAL } from '../../utils/materials';
 
-export function VRDeveloperStation({ position = [-5.0, 0.185, 2.0] }: { position?: [number, number, number] }) {
+export function VRDeveloperStation({ position = [-4.6, 0.185, -0.8] }: { position?: [number, number, number] }) {
   const { scene: dockHeadsetScene } = useGLTF('/models/vr_headset_dock.glb');
   const { scene: controllerScene } = useGLTF('/models/vr_controller.glb');
   const { scene: gamingChairScene } = useGLTF('/models/gaming_chair.glb');
@@ -90,7 +90,7 @@ export function VRDeveloperStation({ position = [-5.0, 0.185, 2.0] }: { position
     return wrapper;
   }, [controllerScene]);
 
-  // Normalize Gaming Chair (height: 1.25m, centered and flush to floor)
+  // Normalize Gaming Chair (height: 1.22m, centered and flush to floor)
   const normalizedGamingChair = useMemo(() => {
     const clone = gamingChairScene.clone(true);
     clone.updateMatrixWorld(true);
@@ -99,7 +99,7 @@ export function VRDeveloperStation({ position = [-5.0, 0.185, 2.0] }: { position
     const rawSize = new THREE.Vector3();
     rawBox.getSize(rawSize);
 
-    const targetHeight = 1.25;
+    const targetHeight = 1.22;
     const scaleFactor = rawSize.y > 0.0001 ? targetHeight / rawSize.y : 1.0;
     clone.scale.setScalar(scaleFactor);
     clone.updateMatrixWorld(true);
@@ -130,26 +130,26 @@ export function VRDeveloperStation({ position = [-5.0, 0.185, 2.0] }: { position
 
   return (
     <group position={position} name="VRDeveloperStation">
-      {/* 1. Sleek Hardware Bench / Counter */}
+      {/* 1. Sleek Hardware Bench / Counter (Width: 2.2m, Depth: 0.8m) */}
       <group position={[0, 0, 0]}>
         <mesh position={[0, 0.48, 0]} material={stationWoodMat}>
-          <boxGeometry args={[2.4, 0.96, 0.8]} />
+          <boxGeometry args={[2.2, 0.96, 0.8]} />
         </mesh>
         <mesh position={[0, 0.98, 0]} material={GOLD_TRIM_MATERIAL}>
-          <boxGeometry args={[2.46, 0.04, 0.86]} />
+          <boxGeometry args={[2.26, 0.04, 0.86]} />
         </mesh>
       </group>
 
       {/* 2. Magnetic VR Charging Base Stand */}
-      <group position={[-0.45, 1.0, 0]}>
+      <group position={[-0.4, 1.0, 0]}>
         <mesh position={[0, 0.02, 0]} material={stationWoodMat}>
-          <boxGeometry args={[0.7, 0.04, 0.45]} />
+          <boxGeometry args={[0.65, 0.04, 0.42]} />
         </mesh>
         {/* Charging LED indicators */}
-        <mesh position={[-0.2, 0.045, 0.18]} material={chargingLedMat}>
+        <mesh position={[-0.18, 0.045, 0.16]} material={chargingLedMat}>
           <sphereGeometry args={[0.015, 8, 8]} />
         </mesh>
-        <mesh position={[0.2, 0.045, 0.18]} material={chargingLedMat}>
+        <mesh position={[0.18, 0.045, 0.16]} material={chargingLedMat}>
           <sphereGeometry args={[0.015, 8, 8]} />
         </mesh>
 
@@ -160,15 +160,15 @@ export function VRDeveloperStation({ position = [-5.0, 0.185, 2.0] }: { position
       </group>
 
       {/* 3. Docked Dual VR Controllers on Charging Mounts */}
-      <group position={[0.45, 1.02, -0.05]} rotation={[-0.3, 0.3, 0]}>
+      <group position={[0.4, 1.02, -0.05]} rotation={[-0.3, 0.3, 0]}>
         <primitive object={normalizedDockController} />
       </group>
-      <group position={[0.78, 1.02, 0.05]} rotation={[-0.3, -0.3, 0]}>
+      <group position={[0.7, 1.02, 0.05]} rotation={[-0.3, -0.3, 0]}>
         <primitive object={normalizedDockController} />
       </group>
 
-      {/* 4. Ergonomic Gaming Chair (Positioned directly in front of the desk, facing forward) */}
-      <group position={[0, 0, 0.85]} rotation={[0, 0, 0]}>
+      {/* 4. Ergonomic Gaming Chair (Situated right in front of the desk, facing the desk) */}
+      <group position={[0, 0, 1.05]} rotation={[0, 0, 0]}>
         <primitive object={normalizedGamingChair} />
       </group>
     </group>

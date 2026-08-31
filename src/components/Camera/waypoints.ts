@@ -13,34 +13,34 @@ export interface CameraWaypoint {
 
 export const CAMERA_WAYPOINTS: CameraWaypoint[] = [
   // =============================================================
-  // PHASE 0: FLOOR 6 EXECUTIVE SUITE HERO HOMEPAGE (0.00 - 0.13)
+  // PHASE 0: FLOOR 6 SPATIAL XR IMMERSION ARENA (0.00 - 0.13)
   // =============================================================
   {
     progress: 0.00,
     floor: 6,
-    position: [0.0, 25.5, 4.5], // Hero landing view: inside CEO suite at human eye level
-    target: [-2.5, 25.0, -1.5], // Focused on CEO desk, gold trim, and panoramic skyline window
+    position: [0.0, 25.5, 4.5], // Hero landing view: inside XR arena at human eye level
+    target: [-1.2, 25.2, 0.2],  // Focused on Hero Floating VR Headset & Arena
     fov: 42,
     doorOpenProgress: 1.0,
-    description: 'Floor 6 Hero - Executive Suite Landing Page'
+    description: 'Floor 6 Hero - Spatial XR Immersion Arena'
   },
   {
     progress: 0.05,
     floor: 6,
-    position: [-1.0, 25.4, 2.5], // CEO Desk & Ultrawide Display Focus
-    target: [-2.5, 25.1, -1.5],
-    fov: 38,
+    position: [-1.2, 25.4, 3.0], // Hero Floating Headset & Developer Station Focus
+    target: [-2.0, 25.2, 0.2],
+    fov: 40,
     doorOpenProgress: 1.0,
-    description: 'Floor 6 - CEO Desk & Gold Accent Suite'
+    description: 'Floor 6 - Hero Spatial Headset Pedestal'
   },
   {
     progress: 0.09,
     floor: 6,
-    position: [2.5, 25.5, 3.0], // Marble Lounge & Skyline Window View
-    target: [0.0, 25.2, -8.0],
+    position: [1.2, 25.4, 3.0], // Active VR Gamer Arena Focus
+    target: [2.0, 25.1, 0.0],
     fov: 40,
     doorOpenProgress: 1.0,
-    description: 'Floor 6 - Panoramic Window & Marble Lounge'
+    description: 'Floor 6 - Active VR Gamer Arena & XR Display'
   },
   {
     progress: 0.13,

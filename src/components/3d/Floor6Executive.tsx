@@ -46,19 +46,19 @@ export function Floor6Executive({ isActive = true }: { isActive?: boolean }) {
       </mesh>
 
       {/* 4. Massive Curved 180° Holographic XR Game Wall (Back Wall) */}
-      <CurvedXRHolographicWall position={[0, 2.0, -5.0]} />
+      <CurvedXRHolographicWall position={[0, 2.0, -4.7]} />
 
       {/* 5. Hero Floating VR Headset Pedestal (Center-Left) */}
-      <HolographicVRPedestal position={[-2.2, 0.185, 0.2]} />
+      <HolographicVRPedestal position={[-1.8, 0.185, 0.5]} />
 
       {/* 6. Active VR Gamer Character inside Pulsing Holographic Arena Ring (Center-Right) */}
-      <VRArenaPlayer position={[2.4, 0.185, -0.2]} />
+      <VRArenaPlayer position={[2.2, 0.185, 0.0]} />
 
       {/* 7. 4x Corner Lighthouse Tracking Towers with Laser Beams */}
       <VRLighthouseTowers />
 
       {/* 8. VR Developer Hardware Station (Charging Dock, Controllers, Gaming Chair) */}
-      <VRDeveloperStation position={[-5.2, 0.185, 2.0]} />
+      <VRDeveloperStation position={[-4.8, 0.185, -0.6]} />
 
       {/* 9. Architectural Floor Lighting Rigs */}
       <spotLight

@@ -2,7 +2,7 @@ import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-export function CurvedXRHolographicWall({ position = [0, 2.0, -4.8] }: { position?: [number, number, number] }) {
+export function CurvedXRHolographicWall({ position = [0, 2.0, -4.7] }: { position?: [number, number, number] }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const hudNodesRef = useRef<THREE.Group>(null);
 
@@ -12,11 +12,11 @@ export function CurvedXRHolographicWall({ position = [0, 2.0, -4.8] }: { positio
       new THREE.MeshStandardMaterial({
         color: new THREE.Color('#00E5FF'),
         emissive: new THREE.Color('#007799'),
-        emissiveIntensity: 1.6,
-        roughness: 0.1,
+        emissiveIntensity: 1.4,
+        roughness: 0.15,
         metalness: 0.8,
         transparent: true,
-        opacity: 0.65,
+        opacity: 0.55,
         side: THREE.DoubleSide
       }),
     []
@@ -28,7 +28,7 @@ export function CurvedXRHolographicWall({ position = [0, 2.0, -4.8] }: { positio
         color: new THREE.Color('#38BDF8'),
         wireframe: true,
         transparent: true,
-        opacity: 0.45
+        opacity: 0.35
       }),
     []
   );
@@ -38,7 +38,7 @@ export function CurvedXRHolographicWall({ position = [0, 2.0, -4.8] }: { positio
       new THREE.MeshStandardMaterial({
         color: new THREE.Color('#0F172A'),
         emissive: new THREE.Color('#0284C7'),
-        emissiveIntensity: 0.8,
+        emissiveIntensity: 0.6,
         roughness: 0.3,
         metalness: 0.9
       }),
@@ -50,74 +50,74 @@ export function CurvedXRHolographicWall({ position = [0, 2.0, -4.8] }: { positio
     const time = state.clock.getElapsedTime();
     if (meshRef.current) {
       const mat = meshRef.current.material as THREE.MeshStandardMaterial;
-      mat.emissiveIntensity = 1.4 + Math.sin(time * 2.0) * 0.4;
+      mat.emissiveIntensity = 1.2 + Math.sin(time * 2.0) * 0.3;
     }
     if (hudNodesRef.current) {
-      hudNodesRef.current.position.y = Math.sin(time * 1.2) * 0.04;
+      hudNodesRef.current.position.y = Math.sin(time * 1.2) * 0.03;
     }
   });
 
   return (
     <group position={position} name="CurvedXRHolographicWall">
-      {/* 1. Curved Ultra-Wide Screen Surface (Arc of 120 degrees, radius 9m) */}
-      <mesh ref={meshRef} material={holographicMaterial} rotation={[0, Math.PI, 0]}>
-        <cylinderGeometry args={[9.0, 9.0, 2.8, 48, 1, true, Math.PI - 0.7, 1.4]} />
+      {/* 1. Curved Back Wall Display (Radius: 12m, arc: 0.7 rad ~ 8.4m width, depth forward is only ~0.35m) */}
+      <mesh ref={meshRef} material={holographicMaterial} rotation={[0, Math.PI, 0]} position={[0, 0, -11.65]}>
+        <cylinderGeometry args={[12.0, 12.0, 2.6, 32, 1, true, Math.PI - 0.35, 0.7]} />
       </mesh>
 
       {/* Wireframe Cyber Grid Overlay */}
-      <mesh material={gridLineMaterial} rotation={[0, Math.PI, 0]} position={[0, 0, 0.02]}>
-        <cylinderGeometry args={[8.98, 8.98, 2.76, 32, 8, true, Math.PI - 0.7, 1.4]} />
+      <mesh material={gridLineMaterial} rotation={[0, Math.PI, 0]} position={[0, 0, -11.63]}>
+        <cylinderGeometry args={[11.98, 11.98, 2.56, 24, 6, true, Math.PI - 0.35, 0.7]} />
       </mesh>
 
-      {/* 2. Top & Bottom Curved Metallic Frame Bezel */}
-      <mesh position={[0, 1.42, 0]} material={glowingFrameMaterial} rotation={[0, Math.PI, 0]}>
-        <cylinderGeometry args={[9.02, 9.02, 0.06, 48, 1, true, Math.PI - 0.72, 1.44]} />
+      {/* Top & Bottom Bezel Frames */}
+      <mesh position={[0, 1.32, -11.65]} material={glowingFrameMaterial} rotation={[0, Math.PI, 0]}>
+        <cylinderGeometry args={[12.02, 12.02, 0.05, 32, 1, true, Math.PI - 0.36, 0.72]} />
       </mesh>
-      <mesh position={[0, -1.42, 0]} material={glowingFrameMaterial} rotation={[0, Math.PI, 0]}>
-        <cylinderGeometry args={[9.02, 9.02, 0.06, 48, 1, true, Math.PI - 0.72, 1.44]} />
+      <mesh position={[0, -1.32, -11.65]} material={glowingFrameMaterial} rotation={[0, Math.PI, 0]}>
+        <cylinderGeometry args={[12.02, 12.02, 0.05, 32, 1, true, Math.PI - 0.36, 0.72]} />
       </mesh>
 
-      {/* 3. Floating 3D Holographic HUD Widgets & Spatial Target Boxes */}
-      <group ref={hudNodesRef}>
-        {/* Left Status HUD */}
-        <group position={[-2.4, 0.4, 0.5]}>
+      {/* 2. Floating 3D Holographic HUD Widgets & Telemetry */}
+      <group ref={hudNodesRef} position={[0, 0, 0.1]}>
+        {/* Left Telemetry HUD */}
+        <group position={[-2.8, 0.3, 0]}>
           <mesh>
-            <planeGeometry args={[1.2, 0.6]} />
-            <meshBasicMaterial color="#00F0FF" transparent opacity={0.3} wireframe />
+            <planeGeometry args={[1.2, 0.5]} />
+            <meshBasicMaterial color="#00F0FF" transparent opacity={0.25} wireframe />
           </mesh>
           <mesh position={[0, 0, 0.01]}>
-            <sphereGeometry args={[0.04, 8, 8]} />
+            <sphereGeometry args={[0.03, 8, 8]} />
             <meshBasicMaterial color="#38BDF8" />
           </mesh>
         </group>
 
-        {/* Center Target Crosshair Grid */}
-        <group position={[0, 0.2, 0.7]}>
+        {/* Center Target Reticle */}
+        <group position={[0, 0.2, 0.05]}>
           <mesh rotation={[0, 0, Math.PI / 4]}>
-            <ringGeometry args={[0.25, 0.28, 4]} />
-            <meshBasicMaterial color="#38BDF8" transparent opacity={0.7} side={THREE.DoubleSide} />
+            <ringGeometry args={[0.22, 0.25, 4]} />
+            <meshBasicMaterial color="#38BDF8" transparent opacity={0.6} side={THREE.DoubleSide} />
           </mesh>
           <mesh rotation={[0, 0, 0]}>
-            <ringGeometry args={[0.4, 0.42, 16]} />
-            <meshBasicMaterial color="#00F0FF" transparent opacity={0.5} side={THREE.DoubleSide} />
+            <ringGeometry args={[0.35, 0.37, 16]} />
+            <meshBasicMaterial color="#00F0FF" transparent opacity={0.4} side={THREE.DoubleSide} />
           </mesh>
         </group>
 
-        {/* Right Telemetry HUD */}
-        <group position={[2.4, 0.4, 0.5]}>
+        {/* Right Status HUD */}
+        <group position={[2.8, 0.3, 0]}>
           <mesh>
-            <planeGeometry args={[1.2, 0.6]} />
-            <meshBasicMaterial color="#00F0FF" transparent opacity={0.3} wireframe />
+            <planeGeometry args={[1.2, 0.5]} />
+            <meshBasicMaterial color="#00F0FF" transparent opacity={0.25} wireframe />
           </mesh>
           <mesh position={[0, 0, 0.01]}>
-            <boxGeometry args={[0.06, 0.06, 0.06]} />
+            <boxGeometry args={[0.05, 0.05, 0.05]} />
             <meshBasicMaterial color="#38BDF8" wireframe />
           </mesh>
         </group>
       </group>
 
-      {/* Screen Ambient Glow */}
-      <pointLight position={[0, 0, 1.5]} color="#00E5FF" intensity={2.2} distance={8} />
+      {/* Soft Cyan Screen Ambient Backlight */}
+      <pointLight position={[0, 0, 0.5]} color="#00E5FF" intensity={1.5} distance={6} />
     </group>
   );
 }
