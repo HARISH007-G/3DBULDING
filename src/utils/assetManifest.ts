@@ -20,7 +20,14 @@ export const ASSET_MANIFEST: Record<string, AssetCategorySpec> = {
 
   // Seating
   'office_chair': { category: 'seating', expectedHeight: [0.80, 1.20], expectedWidth: [0.55, 0.75], targetHeight: 0.95 },
+  'gaming_chair': { category: 'seating', expectedHeight: [1.10, 1.40], expectedWidth: [0.60, 0.85], targetHeight: 1.25 },
   'sofa': { category: 'lounge', expectedHeight: [0.70, 1.00], expectedWidth: [1.60, 3.20], targetHeight: 0.80 },
+
+  // VR & Spatial Computing Hardware
+  'vr_headset': { category: 'desktop-prop', expectedHeight: [0.12, 0.28], expectedWidth: [0.18, 0.35], targetHeight: 0.22 },
+  'vr_headset_dock': { category: 'desktop-prop', expectedHeight: [0.12, 0.28], expectedWidth: [0.18, 0.35], targetHeight: 0.20 },
+  'vr_controller': { category: 'desktop-prop', expectedHeight: [0.10, 0.25], expectedWidth: [0.08, 0.20], targetHeight: 0.18 },
+  'vr_player': { category: 'electronics', expectedHeight: [1.50, 1.95], expectedWidth: [0.50, 1.00], targetHeight: 1.75 },
 
   // Heavy Equipment
   'server_rack': { category: 'electronics', expectedHeight: [1.80, 2.20], expectedWidth: [0.60, 1.00], targetHeight: 2.00 },

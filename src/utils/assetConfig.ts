@@ -19,73 +19,8 @@ export interface GLBAssetTransform {
  */
 export const ASSET_CONFIGS: GLBAssetTransform[] = [
   // =============================================================
-  // FLOOR 6: EXECUTIVE CEO SUITE (Y = 24.185m)
+  // FLOOR 6: SPATIAL XR IMMERSION ARENA (Managed by Floor6Executive.tsx)
   // =============================================================
-  {
-    id: 'f6_exec_desk',
-    url: '/models/executive_desk.glb',
-    floor: 6,
-    room: 'ceo-office',
-    position: [-2.5, 24.185, -1.5],
-    rotation: [0, 0, 0],
-    targetHeight: 0.76,
-    anchor: 'floor',
-    parentGroupId: 'ws_f6_ceo'
-  },
-  {
-    id: 'f6_exec_chair',
-    url: '/models/office_chair.glb',
-    floor: 6,
-    room: 'ceo-office',
-    position: [-2.5, 24.185, -2.25],
-    rotation: [0, 0, 0],
-    targetHeight: 0.95,
-    anchor: 'floor',
-    parentGroupId: 'ws_f6_ceo'
-  },
-  {
-    id: 'f6_laptop',
-    url: '/models/laptop.glb',
-    floor: 6,
-    room: 'ceo-office',
-    position: [-2.3, 24.945, -1.5],
-    rotation: [0, -0.15, 0],
-    targetHeight: 0.18,
-    anchor: 'desk',
-    parentGroupId: 'ws_f6_ceo'
-  },
-  {
-    id: 'f6_task_lamp',
-    url: '/models/task_lamp.glb',
-    floor: 6,
-    room: 'ceo-office',
-    position: [-3.1, 24.945, -1.5],
-    rotation: [0, 0.4, 0],
-    targetHeight: 0.35,
-    anchor: 'desk',
-    parentGroupId: 'ws_f6_ceo'
-  },
-  {
-    id: 'f6_coffee_mug',
-    url: '/models/coffee_mug.glb',
-    floor: 6,
-    room: 'ceo-office',
-    position: [-1.8, 24.945, -1.3],
-    rotation: [0, 0, 0],
-    targetHeight: 0.10,
-    anchor: 'desk',
-    parentGroupId: 'ws_f6_ceo'
-  },
-  {
-    id: 'f6_sky_sofa',
-    url: '/models/sofa.glb',
-    floor: 6,
-    room: 'sky-lounge',
-    position: [3.5, 24.185, 2.0],
-    rotation: [0, -Math.PI / 4, 0],
-    targetHeight: 0.80,
-    anchor: 'floor'
-  },
 
   // =============================================================
   // FLOOR 5: TECH HUB DEV POD & SERVER BAY (Y = 20.185m)
